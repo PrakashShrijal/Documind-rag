@@ -1,6 +1,7 @@
 
 import os
 import time
+import streamlit as st
 
 import chromadb
 from dotenv import load_dotenv
@@ -17,6 +18,12 @@ load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
+if not GEMINI_API_KEY:
+    try:
+        GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+    except (KeyError, FileNotFoundError):
+        GEMINI_API_KEY = None
+        
 if not GEMINI_API_KEY:
     raise RuntimeError(
         "GEMINI_API_KEY not found. Check your .env file."
