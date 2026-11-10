@@ -87,7 +87,8 @@ if st.button("Generate Answer"):
 
             except Exception as e:
                 st.error(
-                    "Could not generate an answer. "
-                    "Check your API configuration and terminal for details."
+                    f"Could not generate an answer. "
+                    f"Check your API configuration and terminal for details."
+                    f"Error details: {e}"
                 )
                 print(f"Gemini error: {e}")
